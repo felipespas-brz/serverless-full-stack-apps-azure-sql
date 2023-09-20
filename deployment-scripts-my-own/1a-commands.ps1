@@ -1,4 +1,4 @@
-Install-Module -Name Az -Repository PSGallery -Force -Scope AllUsers
+# Install-Module -Name Az -Repository PSGallery -Force -Scope AllUsers
 
 Connect-AzAccount -Tenant '16b3c013-d300-468d-ac64-7eda0820b6d3'
 
@@ -6,21 +6,19 @@ Get-AzSubscription
 
 Set-AzContext -Subscription "2edd29f5-689f-48c5-b93e-93723216ea91"
 
-(Invoke-WebRequest -Uri "https://ipinfo.io/ip").Content
-
-# 191.255.33.128
+# (Invoke-WebRequest -Uri "https://ipinfo.io/ip").Content
 
 # Collect password 
 $adminSqlLogin = "cloudadmin"
-$password = Read-Host "Your username is 'cloudadmin'. Please enter a password for your Azure SQL Database server that meets the password requirements"
 
-# Enterprise001!
+# $password = Read-Host "Your username is 'cloudadmin'. Please enter a password for your Azure SQL Database server that meets the password requirements"
+$password = "StrongPassword753!"
 
 # Prompt for local ip address
-$ipAddress = Read-Host "Disconnect your VPN, open PowerShell on your machine and run '(Invoke-WebRequest -Uri "https://ipinfo.io/ip").Content'. Please enter the value (include periods) next to 'Address': "
-Write-Host "Password and IP Address stored"
+# $ipAddress = Read-Host "Disconnect your VPN, open PowerShell on your machine and run '(Invoke-WebRequest -Uri "https://ipinfo.io/ip").Content'. Please enter the value (include periods) next to 'Address': "
+# Write-Host "Password and IP Address stored"
 
-# 191.255.33.128
+$ipAddress = (Invoke-WebRequest -Uri "https://ipinfo.io/ip").Content
 
 # Power shell to create a resource group
 $resourceGroupName = "mslearn-serverless-app"
@@ -44,21 +42,6 @@ Write-Host "Your resources were deployed in the following region:"
 Write-Host $location
 Write-Host "Your server name is:"
 Write-Host $serverName
-
-# PS C:\_Github\serverless-full-stack-apps-azure-sql> Write-Host $uniqueID
-# 350646
-# PS C:\_Github\serverless-full-stack-apps-azure-sql> Write-Host "Your resource group name is:"
-# Your resource group name is:
-# PS C:\_Github\serverless-full-stack-apps-azure-sql> Write-Host $resourceGroupName
-# mslearn-serverless-app
-# PS C:\_Github\serverless-full-stack-apps-azure-sql> Write-Host "Your resources were deployed in the following region:"
-# Your resources were deployed in the following region:
-# PS C:\_Github\serverless-full-stack-apps-azure-sql> Write-Host $location
-# eastus
-# PS C:\_Github\serverless-full-stack-apps-azure-sql> Write-Host "Your server name is:"
-# Your server name is:
-# PS C:\_Github\serverless-full-stack-apps-azure-sql> Write-Host $serverName
-# bus-server350646
 
 # Create a new server with a system wide unique server name
 $server = New-AzSqlServer -ResourceGroupName $resourceGroupName `
@@ -87,8 +70,8 @@ $database = New-AzSqlDatabase  -ResourceGroupName $resourceGroupName `
 
 Write-Host "Database deployed."
 
-# bus-server350646.database.windows.net
+# bus-server377291.database.windows.net
 
-# Server=tcp:bus-server350646.database.windows.net,1433;Initial Catalog=bus-db;User ID=cloudadmin;Password=Enterprise001!;Connection Timeout=30;
+# Server=tcp:bus-server377291.database.windows.net,1433;Initial Catalog=bus-db;User ID=cloudadmin;Password=StrongPassword753!;Connection Timeout=30;
 
-# Server=bus-server350646.database.windows.net,1433;Initial Catalog=bus-db;User ID=cloudadmin;Password=Enterprise001!;Connection Timeout=30;
+# Server=bus-server377291.database.windows.net,1433;Initial Catalog=bus-db;User ID=cloudadmin;Password=StrongPassword753!;Connection Timeout=30;
