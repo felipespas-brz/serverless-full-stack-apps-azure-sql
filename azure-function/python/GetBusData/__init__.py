@@ -41,7 +41,11 @@ def main(GetBusData: func.TimerRequest) -> None:
     geo_fences = get_geo_fences(conn, monitored_buses) or list()
     logging.info(f"{geo_fences=}")
 
-    ## Send notifications. 
+    ## Send notifications. UnComment the Lines below in the "Deploy and monitor notifications using Azure Logic Apps" Exercise
+    
     for fence in geo_fences:
+        ## logging.info(f"Vehicle {fence['vehicle_id']}, route {fence['route_id']}, status: {fence['geofence_status']} at {fence['timestamp']} UTC")
         logging.info(f"Vehicle {fence['VehicleId']}, route {fence['RouteId']}, status: {fence['GeoFenceStatus']} at {fence['TimestampUTC']} UTC")
-        trigger_logic_app(fence, LOGIC_APP_URL)
+        ## trigger_logic_app(fence, LOGIC_APP_URL)
+        
+    trigger_logic_app(geo_fences, LOGIC_APP_URL)
