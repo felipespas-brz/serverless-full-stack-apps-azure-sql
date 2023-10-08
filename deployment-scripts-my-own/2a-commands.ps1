@@ -21,11 +21,7 @@ $storageAccountName = $("storageaccount$($uniqueID)")
 
 New-AzStorageAccount -ResourceGroupName $resourceGroupName -AccountName $storageAccountName -Location $location -SkuName Standard_GRS
 
-# # In case you want to use Python
-# New-AzFunctionApp -Name $azureFunctionName `
-#     -ResourceGroupName $resourceGroupName -StorageAccount $storageAccountName `
-#     -FunctionsVersion 4 -RuntimeVersion 3.9 -Runtime python -Location $location
-
+# In case you want to use Python
 New-AzFunctionApp -Name $azureFunctionName `
     -ResourceGroupName $resourceGroupName -StorageAccount $storageAccountName `
-    -FunctionsVersion 4 -RuntimeVersion 6 -Runtime dotnet -Location $location
+    -FunctionsVersion 4 -RuntimeVersion 3.9 -Runtime python -Location $location
