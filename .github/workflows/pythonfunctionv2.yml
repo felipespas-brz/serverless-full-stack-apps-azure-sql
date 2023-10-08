@@ -58,7 +58,7 @@ jobs:
     - name: Deploy to Azure
       run: |
         func azure functionapp publish ${{ env.AZURE_FUNCTIONAPP_NAME }} --python
-      env:
-        AZURE_FUNCTIONAPP_PUBLISH_PROFILE: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+      # env:
+      #   AZURE_FUNCTIONAPP_PUBLISH_PROFILE: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
       shell: bash
       working-directory: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
