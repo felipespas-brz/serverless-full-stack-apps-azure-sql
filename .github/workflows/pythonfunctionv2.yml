@@ -54,7 +54,6 @@ jobs:
     - name: Install library using npm
       run: |
         npm install -g azure-functions-core-tools
-      working-directory: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
 
     - name: Deploy to Azure
       run: |
@@ -62,3 +61,4 @@ jobs:
       env:
         AZURE_FUNCTIONAPP_PUBLISH_PROFILE: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
       shell: bash
+      working-directory: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
