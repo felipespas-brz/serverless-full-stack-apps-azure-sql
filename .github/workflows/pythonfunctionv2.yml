@@ -51,6 +51,11 @@ jobs:
         echo "" > requirements.txt # blank out requirements.txt so it doesn't get installed again
       working-directory: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
 
+    - name: Install Azure Functions Core Tools
+      uses: Azure/functions-action@v1
+      with:
+        functionAppVersion: '3'
+
     - name: Deploy to Azure
       run: |
         func azure functionapp publish ${{ env.AZURE_FUNCTIONAPP_NAME }} --python
