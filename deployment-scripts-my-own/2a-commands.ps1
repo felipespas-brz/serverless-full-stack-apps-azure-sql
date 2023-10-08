@@ -25,7 +25,3 @@ New-AzStorageAccount -ResourceGroupName $resourceGroupName -AccountName $storage
 New-AzFunctionApp -Name $azureFunctionName `
     -ResourceGroupName $resourceGroupName -StorageAccount $storageAccountName `
     -FunctionsVersion 4 -RuntimeVersion 3.9 -Runtime python -Location $location
-
-# New-AzFunctionApp -Name $azureFunctionName `
-#     -ResourceGroupName $resourceGroupName -StorageAccount $storageAccountName `
-#     -FunctionsVersion 4 -RuntimeVersion 6 -Runtime dotnet -Location $location
