@@ -40,7 +40,7 @@ jobs:
     - name: Install Python
       run: |
         sudo apt-get update
-        sudo apt-get install -y python3.9 python3.9-dev python3.9-venv
+        sudo apt-get install -y python3.9
       shell: bash
 
     - name: Install dependencies
